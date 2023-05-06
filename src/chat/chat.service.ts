@@ -5,8 +5,8 @@ import { QueryService } from '../query/query.service';
 @Injectable()
 export class ChatService {
   constructor(
-    private readonly userRepository: UserRepository,
     private readonly queryService: QueryService,
+    private readonly indexRepository: IndexRepository,
   ) {}
   chat(chatRequest: ChatRequestDto) {
     // TODO: algorithm here.
@@ -14,7 +14,8 @@ export class ChatService {
 
     // 필요 없을 수도 있다..
     // const user = this.userRepository.getUserById(userid);
+    const index = this.indexRepository.getVectorIndexByUserId(userid);
 
-    return this.queryService.query({ userid, prompt });
+    return this.queryService.query({ index, prompt });
   }
 }
