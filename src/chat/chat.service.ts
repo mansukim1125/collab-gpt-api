@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ChatRequestDto } from './dto/chat-request.dto';
+import { QueryService } from '../query/query.service';
 
 @Injectable()
 export class ChatService {
